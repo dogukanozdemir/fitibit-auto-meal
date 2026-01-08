@@ -28,11 +28,3 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: deploy
-          secrets: |
-            FITBIT_CLIENT_ID
-            FITBIT_CLIENT_SECRET
-            API_KEY
-        env:
-          FITBIT_CLIENT_ID: ${{ secrets.FITBIT_CLIENT_ID }}
-          FITBIT_CLIENT_SECRET: ${{ secrets.FITBIT_CLIENT_SECRET }}
-          API_KEY: ${{ secrets.API_KEY }}

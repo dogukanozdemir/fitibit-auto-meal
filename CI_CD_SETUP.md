@@ -31,23 +31,37 @@ Every time you push to GitHub:
 4. It looks like: `1234567890abcdef1234567890abcdef`
 5. **Copy it**
 
-### Step 3: Add Secrets to GitHub
+### Step 3: Set Cloudflare Worker Secrets (One-Time)
+
+Before setting up CI/CD, set your Worker secrets manually:
+
+```bash
+wrangler secret put FITBIT_CLIENT_ID
+# Paste your Fitbit client ID and press Enter
+
+wrangler secret put FITBIT_CLIENT_SECRET
+# Paste your Fitbit client secret and press Enter
+
+wrangler secret put API_KEY
+# Paste your API key and press Enter
+```
+
+**Note:** These secrets are stored in Cloudflare Workers and persist across deployments. You only need to do this once.
+
+### Step 4: Add GitHub Secrets
 
 1. Go to your repo: https://github.com/dogukanozdemir/fitibit-auto-meal
 2. Click **Settings** → **Secrets and variables** → **Actions**
-3. Click **"New repository secret"** and add these **5 secrets**:
+3. Click **"New repository secret"** and add these **2 secrets**:
 
 | Secret Name | Value | Where to Get It |
 |-------------|-------|-----------------|
 | `CLOUDFLARE_API_TOKEN` | Your API token from Step 1 | Cloudflare dashboard |
 | `CLOUDFLARE_ACCOUNT_ID` | Your account ID from Step 2 | Cloudflare dashboard |
-| `FITBIT_CLIENT_ID` | Your Fitbit client ID | https://dev.fitbit.com/apps |
-| `FITBIT_CLIENT_SECRET` | Your Fitbit client secret | https://dev.fitbit.com/apps |
-| `API_KEY` | `e2ce1fde01b661729ad17b392bcb90b0cfe9be8b41b69c7ca70b4bf4b2cdb464` | Your API key |
 
 **Important:** Click **"Add secret"** after entering each one!
 
-### Step 4: Test the Workflow
+### Step 5: Test the Workflow
 
 ```bash
 # Make a small change (or just trigger a deploy)
@@ -57,7 +71,7 @@ git commit -m "Test: Trigger auto-deploy"
 git push
 ```
 
-### Step 5: Watch It Deploy
+### Step 6: Watch It Deploy
 
 1. Go to: https://github.com/dogukanozdemir/fitibit-auto-meal/actions
 2. You'll see your workflow running
