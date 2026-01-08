@@ -156,6 +156,43 @@ app.get('/openapi.json', (c) => {
           responses: { '200': { description: 'Meal logged' } },
         },
       },
+      '/meals/logs': {
+        get: {
+          operationId: 'getMealLogs',
+          summary: 'Get food logs for a specific date',
+          description: 'Retrieves all foods logged for a given date. If no date is provided, returns today\'s logs.',
+          security: [{ apiKey: [] }],
+          parameters: [
+            {
+              name: 'date',
+              in: 'query',
+              required: false,
+              description: 'Date in YYYY-MM-DD format. Defaults to today if not provided.',
+              schema: {
+                type: 'string',
+                pattern: '^\\d{4}-\\d{2}-\\d{2}$',
+              },
+            },
+          ],
+          responses: {
+            '200': {
+              description: 'Food logs for the specified date',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    properties: {
+                      date: { type: 'string' },
+                      summary: { type: 'object' },
+                      foods: { type: 'array' },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
       '/units': {
         get: {
           operationId: 'getUnits',

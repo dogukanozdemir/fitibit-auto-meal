@@ -2,7 +2,7 @@ import { Hono } from 'hono';
 import { z } from 'zod';
 import { Bindings } from '../../index';
 import { getFoodByCanonicalName, getIdempotencyKey, saveIdempotencyKey, saveLog } from '../db';
-import { logFood } from '../fitbitClient';
+import { logFood, getFoodLogs } from '../fitbitClient';
 
 export const mealRoutes = new Hono<{ Bindings: Bindings }>();
 
@@ -145,6 +145,43 @@ mealRoutes.post('/log', async (c) => {
     }
 
     return c.json(response);
+  } catch (error: any) {
+    if (error.isFitbitError) {
+      return c.json({
+        error: 'FITBIT_UPSTREAM_ERROR',
+        status: error.status,
+        body: error.body,
+      }, 502);
+    }
+    throw error;
+  }
+});
+
+mealRoutes.get('/logs', async (c) => {
+  const dateParam = c.req.query('date');
+  
+  let date: string;
+  if (dateParam) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(dateParam)) {
+      return c.json({
+        error: 'VALIDATION_ERROR',
+        message: 'Date must be in YYYY-MM-DD format',
+      }, 400);
+    }
+    date = dateParam;
+  } else {
+    const today = new Date();
+    date = today.toISOString().split('T')[0];
+  }
+
+  try {
+    const foodLogs = await getFoodLogs(c.env, date);
+    
+    return c.json({
+      date,
+      summary: foodLogs.summary || {},
+      foods: foodLogs.foods || [],
+    });
   } catch (error: any) {
     if (error.isFitbitError) {
       return c.json({

@@ -178,3 +178,7 @@ export async function logFood(env: Bindings, log: {
 export async function getFitbitUnits(env: Bindings) {
   return await fitbitRequest(env, 'GET', '/1/foods/units.json');
 }
+
+export async function getFoodLogs(env: Bindings, date: string) {
+  return await fitbitRequest(env, 'GET', `/1/user/-/foods/log/date/${date}.json`);
+}
