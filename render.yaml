@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: fitbit-meal-logger
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20.11.0
+      - key: PORT
+        value: 10000
+      - key: BASE_URL
+        fromGroup: fitbit-env
+      - key: FITBIT_CLIENT_ID
+        fromGroup: fitbit-env
+      - key: FITBIT_CLIENT_SECRET
+        fromGroup: fitbit-env
+      - key: API_KEY
+        fromGroup: fitbit-env
+    disk:
+      name: fitbit-data
+      mountPath: /app
+      sizeGB: 1
