@@ -1,0 +1,32 @@
+{
+  "name": "fitbit-meal-logger",
+  "version": "1.0.0",
+  "description": "Strict Fitbit meal logging bridge for Custom GPT Actions",
+  "main": "dist/server.js",
+  "engines": {
+    "node": ">=20.0.0 <23.0.0"
+  },
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "keywords": ["fitbit", "meal-logging", "gpt"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@fastify/swagger": "^8.14.0",
+    "@fastify/swagger-ui": "^2.1.0",
+    "better-sqlite3": "^9.6.0",
+    "dotenv": "^16.3.1",
+    "fastify": "^4.25.2",
+    "undici": "^6.2.1",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.8",
+    "@types/node": "^20.10.6",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}

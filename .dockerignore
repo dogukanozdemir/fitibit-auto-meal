@@ -1,0 +1,14 @@
+node_modules
+dist
+.env
+app.db
+*.log
+.git
+.gitignore
+README.md
+SETUP.md
+FITBIT_REFERENCE.md
+PROJECT_SUMMARY.md
+examples.http
+test-api.sh
+.nvmrc
