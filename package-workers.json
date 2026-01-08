@@ -1,0 +1,25 @@
+{
+  "name": "fitbit-meal-logger-workers",
+  "version": "1.0.0",
+  "description": "Fitbit meal logging bridge for Cloudflare Workers",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:create": "wrangler d1 create fitbit-meal-logger-db",
+    "db:init": "wrangler d1 execute fitbit-meal-logger-db --file=./schema.sql",
+    "db:local": "wrangler d1 execute fitbit-meal-logger-db --local --file=./schema.sql"
+  },
+  "keywords": ["fitbit", "meal-logging", "cloudflare-workers"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "hono": "^3.12.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20231218.0",
+    "wrangler": "^3.22.1",
+    "typescript": "^5.3.3"
+  }
+}

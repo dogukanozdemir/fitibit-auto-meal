@@ -8,6 +8,7 @@ Complete, production-ready backend for logging meals to Fitbit via Custom GPT Ac
 2. **Setting Up?** → Read **SETUP.md** (step-by-step guide)
 3. **Configuring GPT?** → Read **CUSTOM_GPT_INSTRUCTIONS.md**
 4. **Need API Docs?** → Read **README.md** or visit `/documentation`
+5. **Deploy to Cloudflare Workers?** → Read **DEPLOY_WORKERS.md** and **README_WORKERS.md**
 
 ## 📁 File Guide
 
