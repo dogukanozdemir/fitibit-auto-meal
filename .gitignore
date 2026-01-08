@@ -1,9 +1,11 @@
 node_modules
 dist
 .env
+.dev.vars
 app.db
 app.db-shm
 app.db-wal
 *.log
 .DS_Store
 coverage
+.wrangler

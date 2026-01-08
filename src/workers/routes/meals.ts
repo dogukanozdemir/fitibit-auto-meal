@@ -68,7 +68,6 @@ mealRoutes.post('/log', async (c) => {
     amount: number;
     unitId: number;
     note?: string;
-    name?: string;
   }> = [];
 
   const missingFoods: string[] = [];
@@ -88,7 +87,6 @@ mealRoutes.post('/log', async (c) => {
         amount: item.amount,
         unitId: item.unitId,
         note: item.note,
-        name: food.display_name as string,
       });
     } else if (item.foodId) {
       resolvedItems.push({
@@ -118,7 +116,6 @@ mealRoutes.post('/log', async (c) => {
         unitId: item.unitId,
         amount: item.amount,
         date: data.date,
-        foodName: item.name,
       });
 
       loggedItems.push({

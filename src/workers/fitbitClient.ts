@@ -163,7 +163,6 @@ export async function logFood(env: Bindings, log: {
   unitId: number;
   amount: number;
   date: string;
-  foodName?: string;
 }) {
   const body: Record<string, any> = {
     foodId: log.foodId,
@@ -172,10 +171,6 @@ export async function logFood(env: Bindings, log: {
     amount: log.amount,
     date: log.date,
   };
-
-  if (log.foodName) {
-    body.foodName = log.foodName;
-  }
 
   return await fitbitRequest(env, 'POST', '/1/user/-/foods/log.json', body);
 }
