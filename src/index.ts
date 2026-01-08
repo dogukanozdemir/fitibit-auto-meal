@@ -39,7 +39,7 @@ app.get('/health', (c) => {
 
 app.get('/openapi.json', (c) => {
   return c.json({
-    openapi: '3.0.0',
+    openapi: '3.1.0',
     info: {
       title: 'Fitbit Meal Logger API',
       description: 'Strict API for logging meals to Fitbit via Custom GPT Actions',
