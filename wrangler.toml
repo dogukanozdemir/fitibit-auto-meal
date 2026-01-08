@@ -9,12 +9,12 @@ PORT = "8787"
 [[d1_databases]]
 binding = "DB"
 database_name = "fitbit-meal-logger-db"
-database_id = "your-d1-database-id"
+database_id = "4d3e1657-bb03-4115-8e03-3141642cef56"
 
 [env.production]
-vars = { BASE_URL = "https://fitbit-meal-logger.your-subdomain.workers.dev" }
+vars = { BASE_URL = "https://fitbit-meal-logger.dogu757.workers.dev" }
 
 [[env.production.d1_databases]]
 binding = "DB"
 database_name = "fitbit-meal-logger-db"
-database_id = "your-production-d1-database-id"
+database_id = "4d3e1657-bb03-4115-8e03-3141642cef56"

@@ -1,32 +1,25 @@
 {
-  "name": "fitbit-meal-logger",
+  "name": "fitbit-meal-logger-workers",
   "version": "1.0.0",
-  "description": "Strict Fitbit meal logging bridge for Custom GPT Actions",
-  "main": "dist/server.js",
-  "engines": {
-    "node": ">=20.0.0 <23.0.0"
-  },
+  "description": "Fitbit meal logging bridge for Cloudflare Workers",
+  "main": "src/index.ts",
   "scripts": {
-    "dev": "tsx watch src/server.ts",
-    "build": "tsc",
-    "start": "node dist/server.js"
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:create": "wrangler d1 create fitbit-meal-logger-db",
+    "db:init": "wrangler d1 execute fitbit-meal-logger-db --file=./schema.sql",
+    "db:local": "wrangler d1 execute fitbit-meal-logger-db --local --file=./schema.sql"
   },
-  "keywords": ["fitbit", "meal-logging", "gpt"],
+  "keywords": ["fitbit", "meal-logging", "cloudflare-workers"],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@fastify/swagger": "^8.14.0",
-    "@fastify/swagger-ui": "^2.1.0",
-    "better-sqlite3": "^9.6.0",
-    "dotenv": "^16.3.1",
-    "fastify": "^4.25.2",
-    "undici": "^6.2.1",
+    "hono": "^3.12.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@types/better-sqlite3": "^7.6.8",
-    "@types/node": "^20.10.6",
-    "tsx": "^4.7.0",
+    "@cloudflare/workers-types": "^4.20231218.0",
+    "wrangler": "^3.22.1",
     "typescript": "^5.3.3"
   }
 }
