@@ -15,8 +15,10 @@ const fastify = Fastify({
 const publicPaths = ['/health', '/auth/start', '/auth/callback', '/documentation', '/openapi.json'];
 
 fastify.addHook('onRequest', async (request, reply) => {
+  const pathname = request.url.split('?')[0];
+  
   const isPublic = publicPaths.some(path => 
-    request.url === path || request.url.startsWith('/documentation/')
+    pathname === path || pathname.startsWith('/documentation/')
   );
 
   if (isPublic) {
