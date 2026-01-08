@@ -173,6 +173,12 @@ app.get('/openapi.json', (c) => {
           name: 'X-API-Key',
         },
       },
+      schemas: {
+        Empty: {
+          type: 'object',
+          properties: {},
+        },
+      },
     },
   });
 });
