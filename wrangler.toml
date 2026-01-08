@@ -6,7 +6,7 @@ compatibility_flags = ["nodejs_compat"]
 
 [vars]
 PORT = "8787"
-BASE_URL = "https://fitbit-meal-logger.dogu757.workers.dev"
+BASE_URL = "https://fitibit-auto-meal.dogu757.workers.dev"
 
 [[d1_databases]]
 binding = "DB"
