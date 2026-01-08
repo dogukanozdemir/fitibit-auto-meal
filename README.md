@@ -68,6 +68,9 @@ Your API is now live! 🎉
 
 Visit `https://fitbit-meal-logger.YOUR-SUBDOMAIN.workers.dev/auth/start` and authorize with Fitbit.
 
+
+
+
 ## 📡 API Endpoints
 
 ### Public (No Auth)
