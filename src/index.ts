@@ -49,17 +49,20 @@ app.get('/openapi.json', (c) => {
     paths: {
       '/health': {
         get: {
+          operationId: 'getHealth',
           summary: 'Health check',
           responses: { '200': { description: 'OK' } },
         },
       },
       '/foods': {
         get: {
+          operationId: 'listFoods',
           summary: 'List all registered foods',
           security: [{ apiKey: [] }],
           responses: { '200': { description: 'List of foods' } },
         },
         post: {
+          operationId: 'createFood',
           summary: 'Create custom food in Fitbit',
           security: [{ apiKey: [] }],
           requestBody: {
@@ -88,6 +91,7 @@ app.get('/openapi.json', (c) => {
       },
       '/foods/register': {
         post: {
+          operationId: 'registerFood',
           summary: 'Register existing Fitbit food',
           security: [{ apiKey: [] }],
           requestBody: {
@@ -117,6 +121,7 @@ app.get('/openapi.json', (c) => {
       },
       '/meals/log': {
         post: {
+          operationId: 'logMeal',
           summary: 'Log a meal',
           security: [{ apiKey: [] }],
           requestBody: {
@@ -153,6 +158,7 @@ app.get('/openapi.json', (c) => {
       },
       '/units': {
         get: {
+          operationId: 'getUnits',
           summary: 'Get Fitbit units',
           security: [{ apiKey: [] }],
           responses: { '200': { description: 'Units list' } },
@@ -167,6 +173,7 @@ app.get('/openapi.json', (c) => {
           name: 'X-API-Key',
         },
       },
+      schemas: {},
     },
   });
 });
